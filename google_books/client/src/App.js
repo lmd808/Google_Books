@@ -1,6 +1,6 @@
 import React from 'react';
-import Saved from './components/save.js/';
-import Search from './components/search.js/';
+//import Saved from './components/save.js/';
+//import Search from './components/search.js/';
 import logo from './logo.svg';
 import './App.css';
 
