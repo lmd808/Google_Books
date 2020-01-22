@@ -15,7 +15,7 @@ function ResultCard({ title, link, id, author, image, description, saveBook, del
 						</small>
 					</div>
 					<span className="col-3 offset-6">
-						<Button href={link}>View</Button>
+						<Button href={link}>View Link</Button>
 						<Button id={id} onClick={(event) => deleteBook(event)}>
 							Delete
 						</Button>
@@ -40,22 +40,17 @@ function ResultCard({ title, link, id, author, image, description, saveBook, del
 			<div id="result-card">
 				<div className="row text-center" id="result-header">
 					<div className="col-3">
-						<h4>{title}</h4>
+						<h5>{title}</h5>
 						<small>
-							<br />Written By:
-							<br />
-							{author}
+							<p>Written By: {author}</p>
 						</small>
 					</div>
 					<span className="col-3 offset-6">
-						<Button href={link}>View</Button>
+						<Button href={link}>View Link</Button>
 						<Button id={id} onClick={(event) => saveBook(event)}>
 							Save
 						</Button>
 					</span>
-				</div>
-				<div className="row">
-					<hr />
 				</div>
 				<div className="row">
 					<div className="col-3 text-center">
@@ -65,6 +60,9 @@ function ResultCard({ title, link, id, author, image, description, saveBook, del
 						<p className="lead">Description: </p>
 						{description}
 					</div>
+				</div>
+				<div className="row">
+					<hr />
 				</div>
 			</div>
 		);

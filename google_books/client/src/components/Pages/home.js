@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from '../NavBar/nav';
 import Jumbotron from '../Jumbotron/jumbotron';
 import API from '../../js/bookAPI';
 import ResultCard from '../ResultCard/results';
@@ -13,6 +12,10 @@ class Home extends Component {
 	};
 
 	componentDidMount() {
+		this.loadBooks();
+	}
+
+	loadBooks = () => {
 		API.getBooks()
 			.then((res) => {
 				this.setState({ books: res.data });
@@ -21,7 +24,7 @@ class Home extends Component {
 			.catch((err) => {
 				throw err;
 			});
-	}
+	};
 
 	handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -57,7 +60,7 @@ class Home extends Component {
 
 		const newBook = {
 			title: targetBook[0].volumeInfo.title,
-			authors: targetBook[0].volumeInfo.authors,
+			author: targetBook[0].volumeInfo.authors,
 			description: targetBook[0].volumeInfo.description,
 			image: targetBook[0].volumeInfo.imageLinks.thumbnail,
 			link: targetBook[0].volumeInfo.infoLink
@@ -77,20 +80,19 @@ class Home extends Component {
 
 			API.saveBook({
 				title: targetBook[0].volumeInfo.title,
-				authors: targetBook[0].volumeInfo.authors,
+				author: targetBook[0].volumeInfo.authors,
 				description: targetBook[0].volumeInfo.description,
 				image: targetBook[0].volumeInfo.imageLinks.thumbnail,
 				link: targetBook[0].volumeInfo.infoLink
 			});
 
-			// console.log(newState.books)
+			console.log(newState.books);
 		}
 	};
 
 	render() {
 		return (
 			<div>
-				<Navbar />
 				<Jumbotron />
 				<div className="container">
 					<SearchForm handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} />

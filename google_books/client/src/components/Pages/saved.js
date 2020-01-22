@@ -46,7 +46,7 @@ class Saved extends Component {
 				<Navbar />
 				<Jumbotron />
 				<div className="container">
-					<h3>Your Saved Books</h3>
+					<h3>Reading List: </h3>
 					<div className="container-fluid" id="main-content">
 						{this.state.results.map((book) => {
 							return (

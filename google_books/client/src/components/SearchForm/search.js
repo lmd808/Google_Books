@@ -15,6 +15,7 @@ function SearchForm(props) {
 				{' '}
 				Search
 			</button>
+			<br />
 		</div>
 	);
 }

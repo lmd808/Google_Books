@@ -4,7 +4,6 @@ import React from 'react';
 function Navbar() {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-			<p className="navbar-brand">Google Books</p>
 			<button
 				className="navbar-toggler"
 				type="button"

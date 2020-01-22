@@ -1,10 +1,15 @@
 import React from 'react';
+import Navbar from '../NavBar/nav';
 
 function Jumbotron() {
 	return (
-		<div className="jumbotron jumbotron-fluid bg-secondary text-white">
-			<span className="display-2">Google Book Search</span>
-			<span className="lead">Find and save your favorite books</span>
+		<div>
+			<Navbar />
+			<div className="jumbotron jumbotron-fluid bg-secondary text-white">
+				<span className="display-3">
+					Google Books: <em>Keep Reading</em>
+				</span>
+			</div>
 		</div>
 	);
 }
