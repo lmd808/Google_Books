@@ -7,11 +7,9 @@ function ResultCard({ title, link, id, author, image, description, saveBook, del
 			<div id="result-card">
 				<div className="row text-center" id="result-header">
 					<div className="col-3">
-						<h4>{title}</h4>
+						<h5>{title}</h5>
 						<small>
-							<br />Written By:
-							<br />
-							{author}
+							<p>Written By: {author}</p>
 						</small>
 					</div>
 					<span className="col-3 offset-6">
@@ -22,9 +20,6 @@ function ResultCard({ title, link, id, author, image, description, saveBook, del
 					</span>
 				</div>
 				<div className="row">
-					<hr />
-				</div>
-				<div className="row">
 					<div className="col-3 text-center">
 						<img src={image} alt={title} />
 					</div>
@@ -33,6 +28,8 @@ function ResultCard({ title, link, id, author, image, description, saveBook, del
 						{description}
 					</div>
 				</div>
+				<div className="row" />
+				<hr />
 			</div>
 		);
 	} else {
@@ -61,9 +58,8 @@ function ResultCard({ title, link, id, author, image, description, saveBook, del
 						{description}
 					</div>
 				</div>
-				<div className="row">
-					<hr />
-				</div>
+				<div className="row" />
+				<hr />
 			</div>
 		);
 	}
