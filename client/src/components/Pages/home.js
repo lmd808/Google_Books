@@ -50,13 +50,10 @@ class Home extends Component {
 		event.preventDefault();
 
 		const bookID = event.target.getAttribute('data-id');
-		// console.log("Book ID:", bookID )
 
 		const newState = { ...this.state };
-		// console.log(this.state.results)
 
 		let targetBook = this.state.results.filter((book) => book.id === bookID);
-		// Parses out book data from results by book id
 
 		const newBook = {
 			title: targetBook[0].volumeInfo.title,
@@ -75,7 +72,7 @@ class Home extends Component {
 			// console.log('Target:', targetBook[0])
 
 			this.setState(newState);
-			// Mutates state to now hold saved books in this.state.books
+			// Changes state to now hold saved books in this.state.books
 			console.log('Updated this.state:', this.state.books);
 
 			API.saveBook({

@@ -2,7 +2,7 @@ import React from 'react';
 
 function SearchForm(props) {
 	return (
-		<div id="search-form" className="text-center">
+		<div id="search-form" className=" container text-center">
 			<input
 				className="form-control"
 				name="title"

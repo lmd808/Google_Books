@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from '../NavBar/nav';
 import Jumbotron from '../Jumbotron/jumbotron';
 import API from '../../js/bookAPI';
 import ResultCard from '../ResultCard/results';
@@ -43,10 +42,9 @@ class Saved extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar />
 				<Jumbotron />
 				<div className="container">
-					<h3>Reading List: </h3>
+					<h3>My Reading List: </h3>
 					<div className="container-fluid" id="main-content">
 						{this.state.results.map((book) => {
 							return (
