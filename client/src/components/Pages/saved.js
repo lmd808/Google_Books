@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Jumbotron from '../Jumbotron/jumbotron';
 import API from '../../js/bookAPI';
 import ResultCard from '../ResultCard/results';
+import NavBar from '../NavBar/nav';
+import Navbar from '../NavBar/nav';
 
 class Saved extends Component {
 	state = {
@@ -12,13 +14,12 @@ class Saved extends Component {
 		API.getBooks()
 			.then((res) => {
 				this.setState({ results: res.data });
-				console.log('results:', this.state.results);
 			})
 			.catch((err) => {
 				throw err;
 			});
 	}
-
+	// handle the deletion of a book from my saved array
 	handleDeleteBook = (event) => {
 		event.preventDefault();
 
@@ -32,7 +33,6 @@ class Saved extends Component {
 		API.deleteBook(bookID)
 			.then((response) => {
 				this.setState(newState);
-				console.log(response);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -42,12 +42,15 @@ class Saved extends Component {
 	render() {
 		return (
 			<div>
+				<Navbar />
 				<Jumbotron />
 				<div className="container">
-					<h3>My Reading List: </h3>
+					<h3>My Books </h3>
 					<div className="container-fluid" id="main-content">
+						{/* map out my array of results */}
 						{this.state.results.map((book) => {
 							return (
+								// result card will have the following fields populating it
 								<ResultCard
 									key={book._id}
 									title={book.title}

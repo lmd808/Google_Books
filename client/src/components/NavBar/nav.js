@@ -3,6 +3,7 @@ import React from 'react';
 
 function Navbar() {
 	return (
+		// formatting form boot swatch
 		<nav className="navbar navbar-expand-lg navbar-dark bg-primary">
 			<button
 				className="navbar-toggler"
@@ -18,11 +19,13 @@ function Navbar() {
 
 			<div className="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul className="navbar-nav mr-auto">
-					<li className="nav-item active">
+					<li className="nav-item">
+						{/* link to home pace (search) */}
 						<a className="nav-link" href="/">
 							Search
 						</a>
 					</li>
+					{/* link to savedBooks page (saved) */}
 					<li className="nav-item">
 						<a className="nav-link" href="/saved">
 							Saved

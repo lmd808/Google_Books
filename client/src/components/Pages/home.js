@@ -3,36 +3,37 @@ import Jumbotron from '../Jumbotron/jumbotron';
 import API from '../../js/bookAPI';
 import ResultCard from '../ResultCard/results';
 import SearchForm from '../SearchForm/search';
+import Navbar from '../NavBar/nav';
 
 class Home extends Component {
+	// set my intial state
 	state = {
 		books: [],
 		results: [],
 		title: ''
 	};
-
+	// when components mount load books
 	componentDidMount() {
 		this.loadBooks();
 	}
-
+	// get my current books
 	loadBooks = () => {
 		API.getBooks()
 			.then((res) => {
 				this.setState({ books: res.data });
-				console.log('books:', this.state.books);
 			})
 			.catch((err) => {
 				throw err;
 			});
 	};
-
+	// handle my input change
 	handleInputChange = (event) => {
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
 	};
-
+	// handle submit to request books from api
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		API.getGoogleSearchBooks(this.state.title)
@@ -45,10 +46,10 @@ class Home extends Component {
 				throw err;
 			});
 	};
-
+	// handle saving my books
 	handleSaveBook = (event) => {
 		event.preventDefault();
-
+		// get value of book's current id
 		const bookID = event.target.getAttribute('data-id');
 
 		const newState = { ...this.state };
@@ -62,10 +63,9 @@ class Home extends Component {
 			image: targetBook[0].volumeInfo.imageLinks.thumbnail,
 			link: targetBook[0].volumeInfo.infoLink
 		};
-		// Instantiates new object formatted per the db schema.
 
 		if (this.state.books[bookID]) {
-			console.log(`You've already saved that book.`);
+			alert(`You already saved that book.`);
 			return;
 		} else {
 			newState.books[bookID] = newBook;
@@ -90,10 +90,11 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
+				<Navbar />
 				<Jumbotron />
 				<div className="container">
 					<SearchForm handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} />
-					<div className="container-fluid" id="main-content">
+					<div className="container" id="main-content">
 						{this.state.results.map((book) => {
 							return (
 								<ResultCard
