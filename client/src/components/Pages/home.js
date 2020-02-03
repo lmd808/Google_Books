@@ -4,6 +4,7 @@ import API from '../../js/bookAPI';
 import ResultCard from '../ResultCard/results';
 import SearchForm from '../SearchForm/search';
 import Navbar from '../NavBar/nav';
+import JumbotronError from '../Jumbotron/jumbotron404';
 
 class Home extends Component {
 	// set my intial state
@@ -88,31 +89,39 @@ class Home extends Component {
 	};
 
 	render() {
-		return (
-			<div>
-				<Navbar />
-				<Jumbotron />
-				<div className="container">
-					<SearchForm handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} />
-					<div className="container" id="main-content">
-						{this.state.results.map((book) => {
-							return (
-								<ResultCard
-									key={book.id}
-									title={book.volumeInfo.title}
-									id={book.id}
-									link={book.volumeInfo.infoLink}
-									author={book.volumeInfo.authors}
-									image={book.volumeInfo.imageLinks.thumbnail}
-									description={book.volumeInfo.description}
-									saveBook={this.handleSaveBook}
-								/>
-							);
-						})}
+		if (this.state.results) {
+			return (
+				<div>
+					<Navbar />
+					<Jumbotron />
+					<div className="container">
+						<SearchForm
+							handleFormSubmit={this.handleFormSubmit}
+							handleInputChange={this.handleInputChange}
+						/>
+
+						<div className="container" id="main-content">
+							{this.state.results.map((book) => {
+								return (
+									<ResultCard
+										key={book.id}
+										title={book.volumeInfo.title}
+										id={book.id}
+										link={book.volumeInfo.infoLink}
+										author={book.volumeInfo.authors}
+										image={book.volumeInfo.imageLinks.thumbnail}
+										description={book.volumeInfo.description}
+										saveBook={this.handleSaveBook}
+									/>
+								);
+							})}
+						</div>
 					</div>
 				</div>
-			</div>
-		);
+			);
+		} else {
+			return <JumbotronError />;
+		}
 	}
 }
 
